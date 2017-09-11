@@ -1,2 +1,2 @@
 # bandera
-RAW data repsitory for Bandera geodesign workshop
+RAW data repository for Bandera geodesign workshop
