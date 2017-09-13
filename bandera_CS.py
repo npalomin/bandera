@@ -26,14 +26,14 @@ env.overwriteOutput = True
 # Parameters
 #####################################################################################
 
-# Input feature class containing linear features
+# Input feature class containing linear features (UTM projection)
 infc = "N:\\bandera\\GIS\\bandera.gdb\\EJES_2015_santiago"
 
 # Input feature class containing point features
 # crPts = "N:\\bandera\\GIS\\bandera.gdb\\midPOINT"
 
 # Output feature class to store fc
-sampfc = "N:\\bandera\\GIS\\bandera.gdb\\bandera_cS"
+sampfc = "N:\\bandera\\GIS\\bandera.gdb\\bandera_CS"
 dirfc = os.path.dirname(sampfc)
 filefc = os.path.basename(sampfc)
 
