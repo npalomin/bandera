@@ -33,7 +33,7 @@ infc = "N:\\bandera\\GIS\\bandera.gdb\\EJES_2015_santiago"
 # crPts = "N:\\bandera\\GIS\\bandera.gdb\\midPOINT"
 
 # Output feature class to store fc
-sampfc = ""N:\\bandera\\GIS\\bandera.gdb\\bandera_cS""
+sampfc = "N:\\bandera\\GIS\\bandera.gdb\\bandera_cS"
 dirfc = os.path.dirname(sampfc)
 filefc = os.path.basename(sampfc)
 
