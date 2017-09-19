@@ -14,11 +14,7 @@
 |12   | Intersect |Intersect line(kerb) with Transect (Output type POINT) *with the same projection*|
 |13   | Add XY Coordinatesa | calculate x, y for intersection points|
 |14   | Table To Excel |Save Attribute Table to excel|
-
-
-
-|12   | Table To Excel |Save Attribute Table to excel|
-|13   | Export as CSV |Save excel to csv file|
-|14   | Pyton Pandas Jupyter |import pandas as pd / %matplotlib inline|
-|15   | Pyton Pandas Jupyter |canyon = pd.read_csv('N:\\bandera\GIS\Man_int_tran_merge_UTM.csv')|
-|16   | Pyton Pandas Jupyter |canyonsum = df.groupby('FID_Export_CS_transects').sum()|
+|15   | Export as CSV |Save excel to csv file|
+|16   | Pyton Pandas Jupyter |see http://localhost:8888/notebooks/bandera3.ipynb|
+|17   | Add Data (Arcmap) |read csv|
+|18   | XY To line |draw line between points|
