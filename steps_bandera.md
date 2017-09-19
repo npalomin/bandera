@@ -10,7 +10,13 @@
 | 8   | Add Field & Field Calculator| degrees Type Float Python degrees = (180/math.pi)* !radians!|
 | 9   | Add Field & Field Calculator| heading Type Float VB Script heading = 360 - [degrees]|
 |10   | Feature To Polygon| Convert lines (manzanas) to polygon|
-|11   | Intersect |Intersect polygon with Transect (Output type LINE) *with the same projection|
+|11   | Intersect |Intersect polygon with Transect (Output type LINE) *with the same projection*|
+|12   | Intersect |Intersect line(kerb) with Transect (Output type POINT) *with the same projection*|
+|13   | Add XY Coordinatesa | calculate x, y for intersection points|
+|14   | Table To Excel |Save Attribute Table to excel|
+
+
+
 |12   | Table To Excel |Save Attribute Table to excel|
 |13   | Export as CSV |Save excel to csv file|
 |14   | Pyton Pandas Jupyter |import pandas as pd / %matplotlib inline|
