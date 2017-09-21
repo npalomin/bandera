@@ -2,7 +2,7 @@
 | ----|---------------|---------|
 | 1   | Export in Catalog | Right click on file (geojson) and export to gdb|
 | 2   | Model Builder | Calculate mid point Feature Vertices to Points|
-| 3   | Project | Convert to UTM if neccesary
+| 3   | Project | Convert to UTM if neccesary|
 | 4   | IDLE |Create Transect lines with python script (link data features to gdb) npalomin/bandera/bandera_CS.py|
 | 5   | Add Geometry Attributes| Create LINE_START_MID_END for Transect|
 | 6   | Add Field & Field Calculator| slope Type Float VB Script (y1-y2) / (x1-x2)|
