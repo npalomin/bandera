@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "scl_1sqsq",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "width": 1600.0, "height": 1600.0, "area": 2560000.0, "perimeter": 6400.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -70.641830333797145, -33.434988549303085 ], [ -70.659008335894839, -33.434980283931985 ], [ -70.659019484195241, -33.449382909588586 ], [ -70.641838631499851, -33.44939094692625 ], [ -70.641830333797145, -33.434988549303085 ] ] ] } }
+]
+}
