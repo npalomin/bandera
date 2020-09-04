@@ -50,6 +50,8 @@ library(ggraph)
 library(data.table)
 install.packages("skimr")
 library(skimr)
+install.packages("mapedit")
+library(mapedit)
 ```
 
 ```{r}
@@ -204,5 +206,87 @@ ggplot(scl_in2) +
 
 ```{r}
 mapview(scl_in) 
+```
+
+# London
+```{r}
+ldn <- st_read("/Users/nicolas/Documents/R_GitHub/StSpMe/stype/bridges1.gpkg")
+lon_m <- st_read("/Users/nicolas/Documents/R_GitHub/bandera/lon_m.gpkg")
+```
+
+```{r}
+cp <- st_point(x = c(-9866.3110,6713317.2172)) %>% #c(532100.4157,181845.3766)27700 / #c(-0.097418,51.520088)4326
+  st_geometry() %>%
+  st_sf(crs = 3857)
+```
+
+```{r}
+cpb <- st_buffer(cp, dist = 1295) # buffer at 1295 m for a 2.59 km side (1 mile) square
+cpbb <- st_bbox(cpb) %>%
+  st_as_sfc() %>%
+  st_geometry() %>%
+  st_sf()
+
+cpbb
+```
+
+```{r}
+mapview(cpbb) + cp + cpb + lon_m
+```
+
+```{r}
+st_write(cpbb, dsn = "/Users/nicolas/Documents/R_GitHub/bandera/cpbb.gpkg")
+```
+
+```{r}
+lon3 <- st_transform(ldn, crs=3857) %>%
+  st_intersection(cpbb)
+```
+
+```{r}
+lon_m1 <- lon_m %>%
+  st_intersection(cpbb)
+```
+
+```{r}
+ggplot(lon3) +
+  geom_sf() +
+  geom_sf(data=lon_m1)
+```
+
+```{r}
+lon3 <- lon3 %>%
+  mutate(pSpace = ntile(foW,3),
+         vSpace = ntile(caW,3),
+         vGrade = case_when(vSpace == 1 ~ "A",
+                            vSpace == 2 ~ "B",
+                            vSpace == 3 ~ "C"),
+         classQ = paste(vGrade, pSpace, sep = "")) %>%
+  mutate(wsizeQ = case_when(classQ == "A1" ~ 1,
+                           classQ == "A2" | classQ == "B1" ~ 2,
+                           classQ == "A3" | classQ == "B2" | classQ == "C1" ~ 3,
+                           classQ == "C2" | classQ == "B3" ~ 4,
+                           classQ == "C3" ~ 5))
+```
+
+```{r}
+lon3 %>% 
+  mutate(classQ = fct_relevel(classQ, c("A1","A2","A3","B1","B2","B3","C1","C2","C3"))) %>%
+  ggplot() +
+  geom_sf(aes(col = classQ, size = wsizeQ), show.legend = F, linejoin="mitre") +
+  #geom_sf(data = scl_ml, size=0.3, linetype="dotted", color="#9E6F4F") + 
+  geom_sf_label(data = lon_m1, aes(label=name), size=2.5, fontface = "italic", family="serif",
+                label.size = 0.001, fill=alpha("white",0.7)) +
+  geom_sf(data = lon_m1, size=1, shape=3, color ="#9E6F4F") +
+  scale_colour_manual(values = bipal9ch) +
+  scale_size_continuous(range = c(0.6,0.9)) +
+  #annotate(geom = "text", x = -70.6505, y =-33.4393 , label = "Paseo Huerfanos", size = 3, family ="serif", angle = 6.5) +
+  #annotate(geom = "text", x = -70.6433, y =-33.44 , label = "Cerro\nSanta\nLucia", size = 3, family ="serif") +
+  theme_tufte() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.margin = margin(0.5, -0.5, 0.5, -0.5, "cm")) +
+  annotation_scale(location = "br", style = "ticks", tick_height = 1, height = unit(0, "mm"), line_width = 0.5, pad_x = unit(7, "mm"), text_cex = 0.6)
 ```
 
