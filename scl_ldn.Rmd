@@ -290,3 +290,11 @@ lon3 %>%
   annotation_scale(location = "br", style = "ticks", tick_height = 1, height = unit(0, "mm"), line_width = 0.5, pad_x = unit(7, "mm"), text_cex = 0.6)
 ```
 
+```{r}
+auex <- st_read("/Users/nicolas/Downloads/Blocks_and_Roads_Table_2.csv")
+```
+
+```{r}
+auex
+```
+
